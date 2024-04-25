@@ -9,6 +9,30 @@ exports.getAllTeachers = async (req, res) => {
     }
 };
 
+exports.getTeacherSuggestions = async (req, res) => {
+    const { name } = req.query;
+    try {
+        const teachers = await Teacher.find({ name: { $regex: name, $options: 'i' } }).select('name');
+        res.json(teachers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+exports.getTeacherById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const teacher = await Teacher.findById(id).populate('department');
+        if (!teacher) {
+            return res.status(404).json({ message: 'Teacher not found' });
+        }
+        res.json(teacher);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 exports.createTeacher = async (req, res) => {
     const { name, department } = req.body;
     const newTeacher = new Teacher({ name, department: department });

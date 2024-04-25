@@ -1,25 +1,38 @@
 import api from './api';
+const login = (email, password) => {
+    console.log(email, password)
+    return api
+        .post("/auth/admin", {
+            email,
+            password,
+        })
+        .then((response) => {
+            console.log(response)
+            if (response.data.email) {
 
-const loginStudent = async ({ groupId, password }) => {
-    try {
-        const response = await api.post('/auth/student', { groupId, password });
-        const { token } = response.data;
-        localStorage.setItem('token', token);
-        // Set the token in the request headers for future requests
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } catch (error) {
-        throw error.response.data;
-    }
+                localStorage.setItem("user", JSON.stringify(response.data));
+            }
+
+            return response.data;
+        });
 };
 
-const logoutStudent = () => {
+const logout = () => {
     localStorage.removeItem('token');
-    delete api.defaults.headers.common['Authorization'];
+    localStorage.removeItem('user');
+    return api.post("/admin/logout").then((response) => {
+        return response.data;
+    });
+};
+
+const getCurrentUser = () => {
+    return JSON.parse(localStorage.getItem("user"));
 };
 
 const authService = {
-    loginStudent,
-    logoutStudent,
+    login,
+    logout,
+    getCurrentUser
 };
 
 export default authService;

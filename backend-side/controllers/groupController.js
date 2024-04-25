@@ -1,5 +1,6 @@
 const Group = require('../models/Group');
 const Teacher = require('../models/Teacher');
+const crypto = require('crypto');
 
 exports.getAllGroups = async (req, res) => {
     try {
@@ -10,8 +11,26 @@ exports.getAllGroups = async (req, res) => {
     }
 };
 
+exports.getTeachersForGroup = async (req, res) => {
+    const { password } = req.body;
+
+    try {
+        const group = await Group.findOne({ password });
+        if (!group) {
+            return res.status(401).json({ error: 'Invalid group credentials' });
+        }
+
+        const teachers = await Teacher.find({ _id: { $in: group.teachers } });
+        res.json(teachers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 exports.createGroup = async (req, res) => {
-    const { name, department, password, teachers } = req.body;
+    const { name, department, teachers } = req.body;
+    const password = crypto.randomBytes(8).toString('hex');
     const newGroup = new Group({
         name,
         department: department,

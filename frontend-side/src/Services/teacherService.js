@@ -9,6 +9,11 @@ const createTeacher = async (teacher) => {
     return await api.post('/teachers', teacher);
 };
 
+const getTeacherById = async (teacherId) => {
+    const response = await api.get(`/teachers/${teacherId}`);
+    return response.data;
+};
+
 const updateTeacher = async (id, updatedTeacher) => {
     return await api.put(`/teachers/${id}`, updatedTeacher);
 };
@@ -19,6 +24,7 @@ const deleteTeacher = async (id) => {
 
 const teacherService = {
     getAllTeachers,
+    getTeacherById,
     createTeacher,
     updateTeacher,
     deleteTeacher,
