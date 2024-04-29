@@ -1,6 +1,6 @@
-// TeacherSelection.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from "./Header";
 
 const TeacherSelection = () => {
     const [teachers, setTeachers] = useState([]);
@@ -17,16 +17,22 @@ const TeacherSelection = () => {
 
     return (
         <div>
-            <h2>Select a Teacher</h2>
-            <ul>
+            <Header/>
+        <div className="container">
+            <h2 className="text-center">Select a Teacher</h2>
+            <ul className="list-group">
                 {teachers.map((teacher) => (
-                    <li key={teacher._id}>
-                        <button onClick={() => handleTeacherSelect(teacher._id)}>
+                    <li key={teacher._id} className="list-group-item">
+                        <button
+                            className="btn btn-primary btn-block"
+                            onClick={() => handleTeacherSelect(teacher._id)}
+                        >
                             {teacher.name}
                         </button>
                     </li>
                 ))}
             </ul>
+        </div>
         </div>
     );
 };

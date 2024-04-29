@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import questionService from "../../../Services/questionService";
 
 const UpdateQuestion = ({ questionId, initialQuestion, onUpdate, onCloseModal }) => {
@@ -32,7 +32,7 @@ const UpdateQuestion = ({ questionId, initialQuestion, onUpdate, onCloseModal })
         e.preventDefault();
         try {
             await questionService.updateQuestion(questionId, question);
-            onUpdate(); // Call the onUpdate callback function provided by the parent component
+            onUpdate();
         } catch (error) {
             console.error('Error updating question:', error);
         }

@@ -41,7 +41,7 @@ const CreateQuestion = ({ onCreateQuestion, onCloseModal }) => {
                 type: '',
                 choices: [],
             });
-            onCreateQuestion(); // Call the onCreateQuestion callback function provided by the parent component
+            onCreateQuestion();
         } catch (error) {
             console.error('Error creating question:', error);
         }

@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import questionService from '../../../Services/questionService';
 import evaluationService from '../../../Services/evaluationService';
+import Header from "../../Header";
 
 const EvaluationForm = () => {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
     const [openEndedResponse, setOpenEndedResponse] = useState('');
     const [hasSubmittedEvaluation, setHasSubmittedEvaluation] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const teacherId = location.state?.teacherId;
-    const groupId = 'group-id'; // Replace with the actual group ID
+    const groupId = 'group-id';
 
     useEffect(() => {
         fetchQuestions();
@@ -59,11 +61,14 @@ const EvaluationForm = () => {
             await evaluationService.submitEvaluation(evaluationData);
             navigate('/confirmation');
         } catch (error) {
+            setErrorMessage((error.response.data.message))
             console.error('Error submitting evaluation:', error);
         }
     };
 
     return (
+        <div>
+            <Header/>
         <div className="container">
             <h2>Evaluation Form</h2>
             <form onSubmit={handleSubmit}>
@@ -71,16 +76,23 @@ const EvaluationForm = () => {
                     <div key={question._id} className="mb-3">
                         <p>{question.text}</p>
                         {question.type === 'rating' && (
-                            <div className="form-group">
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="5"
-                                    className="form-control-range"
-                                    value={answers[question._id] || ''}
-                                    onChange={(e) => handleAnswerChange(question._id, e.target.value)}
-                                />
-                                <span>{answers[question._id] || 'N/A'}</span>
+                            <div className="form-check">
+                                {[1, 2, 3, 4, 5].map((ratingValue) => (
+                                    <div key={ratingValue} className="form-check form-check-inline">
+                                        <input
+                                            type="checkbox"
+                                            className="form-check-input"
+                                            id={`${question._id}-${ratingValue}`}
+                                            name={question._id}
+                                            value={ratingValue}
+                                            checked={answers[question._id] === ratingValue.toString()}
+                                            onChange={(e) => handleAnswerChange(question._id, e.target.checked ? e.target.value : '')}
+                                        />
+                                        <label className="form-check-label" htmlFor={`${question._id}-${ratingValue}`}>
+                                            {ratingValue}
+                                        </label>
+                                    </div>
+                                ))}
                             </div>
                         )}
                         {question.type === 'choice' && (
@@ -119,10 +131,12 @@ const EvaluationForm = () => {
                     value={openEndedResponse}
                     onChange={(e) => setOpenEndedResponse(e.target.value)}
                 />
+                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                 <button type="submit" className="btn btn-primary">
                     Submit Evaluation
                 </button>
             </form>
+        </div>
         </div>
     );
 };

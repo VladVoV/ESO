@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import '../CSS/Header.css';
+import '../index.css'
 import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import authService from "../Services/authService";
 
@@ -8,6 +9,7 @@ import authService from "../Services/authService";
 
 function Navbar() {
     const [currentUser, setCurrentUser] = useState(undefined);
+    const navigate = useNavigate();
 
         useEffect(() => {
             const user = authService.getCurrentUser();
@@ -20,10 +22,14 @@ function Navbar() {
         authService.logout();
     };
 
+    const handleReturnToMainPage = () => {
+        navigate('/');
+    };
+
 
     return (
         <header className="navbar navbar-expand-lg navbar-light bg-light">
-            <h1 className="navbar-brand">PNU</h1>
+            <h1 className="navbar-brand" onClick={handleReturnToMainPage}>PNU</h1>
 
             <nav className="navbar-nav ml-auto">
                 <ul className="navbar-nav">
@@ -55,13 +61,6 @@ function Navbar() {
                             </Link>
                         </li>
                     )}
-                    {/*{currentUser && (*/}
-                    {/*    <li className="nav-item">*/}
-                    {/*        <Link className="nav-link" to={'/admin/evaluation-results'}>*/}
-                    {/*            <div>Results</div>*/}
-                    {/*        </Link>*/}
-                    {/*    </li>*/}
-                    {/*)}*/}
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/evaluation-statistics'}>
