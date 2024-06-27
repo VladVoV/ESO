@@ -19,7 +19,7 @@ const TeacherSelection = () => {
         <div>
             <Header/>
         <div className="container">
-            <h2 className="text-center">Select a Teacher</h2>
+            <h2 className="text-center">Вибрати викладача</h2>
             <ul className="list-group">
                 {teachers.map((teacher) => (
                     <li key={teacher._id} className="list-group-item">

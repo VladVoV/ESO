@@ -49,10 +49,10 @@ const AdminLogin = () => {
                     className="card shadow-sm border-0 rounded"
                 >
                     <div className="card-body">
-                        <h2 className="card-title text-center mb-4">Admin Login</h2>
+                        <h2 className="card-title text-center mb-4">Вхід</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className="login-form">
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="email">Пошта</label>
                                 <input
                                     type="text"
                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
@@ -62,7 +62,7 @@ const AdminLogin = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Пароль</label>
                                 <input
                                     type="password"
                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
@@ -76,7 +76,7 @@ const AdminLogin = () => {
                                     {loading && (
                                         <span className="spinner-border spinner-border-sm"></span>
                                     )}
-                                    <span>Login</span>
+                                    <span>Вхід</span>
                                 </button>
                             </div>
 

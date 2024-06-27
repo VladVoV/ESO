@@ -36,42 +36,42 @@ function Navbar() {
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/departments'}>
-                                <div>Departments</div>
+                                <div>Підрозділи</div>
                             </Link>
                         </li>
                     )}
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/teachers'}>
-                                <div>Teachers</div>
+                                <div>Викладачі</div>
                             </Link>
                         </li>
                     )}
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/groups'}>
-                                <div>Groups</div>
+                                <div>Групи</div>
                             </Link>
                         </li>
                     )}
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/questions'}>
-                                <div>Questions</div>
+                                <div>Запитання</div>
                             </Link>
                         </li>
                     )}
                     {currentUser && (
                         <li className="nav-item">
                             <Link className="nav-link" to={'/admin/evaluation-statistics'}>
-                                <div>Statistics</div>
+                                <div>Статистика</div>
                             </Link>
                         </li>
                     )}
                     {currentUser && (
                         <li className="nav-item">
                             <a href="/" className="nav-link" onClick={logOut}>
-                                LogOut
+                                Вийти
                             </a>
                         </li>
                     )}

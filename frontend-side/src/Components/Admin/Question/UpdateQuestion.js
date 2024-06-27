@@ -52,11 +52,11 @@ const UpdateQuestion = ({ questionId, initialQuestion, onUpdate, onCloseModal })
                 type="text"
                 value={question.text}
                 onChange={handleInputChange}
-                placeholder="Question Text"
+                placeholder="Текст запитання"
             />
 
             <select value={question.type} onChange={handleTypeChange}>
-                <option value="">Select Question Type</option>
+                <option value="">Тип запитання</option>
                 <option value="rating">Rating</option>
                 <option value="choice">Choice</option>
                 <option value="open">Open</option>
@@ -73,17 +73,17 @@ const UpdateQuestion = ({ questionId, initialQuestion, onUpdate, onCloseModal })
                                 placeholder={`Choice ${index + 1}`}
                             />
                             <button type="button" onClick={() => handleRemoveChoice(index)}>
-                                Remove
+                                Вилучити
                             </button>
                         </div>
                     ))}
                     <button type="button" onClick={handleAddChoice}>
-                        Add Choice
+                        Додати
                     </button>
                 </div>
             )}
 
-            <button type="submit">Update Question</button>
+            <button type="submit">Оновити</button>
         </form>
         </div>
     );

@@ -87,12 +87,11 @@ const TeacherManagement = () => {
         <div>
             <Header/>
             <div className="container my-5">
-                <h2 className="mb-4">Teacher Management</h2>
+                <h2 className="mb-4">Викладачі</h2>
                 <div className="card mb-4">
                     <div className="card-body">
-                        <h5 className="card-title">Create Teacher</h5>
                         <button className="btn btn-primary" onClick={handleCreateTeacherModal}>
-                            Create
+                            Створити
                         </button>
                     </div>
                 </div>
@@ -102,7 +101,7 @@ const TeacherManagement = () => {
                             <div className="d-flex justify-content-between align-items-center">
                                 <div>
                                     <h5>{teacher.name}</h5>
-                                    <p className="mb-0">Department: {teacher.department.name}</p>
+                                    <p className="mb-0">Підрозділ: {teacher.department.name}</p>
                                 </div>
                                 <div>
                                     <button
@@ -111,13 +110,13 @@ const TeacherManagement = () => {
                                             handleUpdateTeacher(teacher)
                                         }
                                     >
-                                        Update Teacher
+                                        Оновити
                                     </button>
                                     <button
                                         className="btn btn-danger"
                                         onClick={() => handleDeleteTeacher(teacher._id)}
                                     >
-                                        Delete Teacher
+                                        Видалити
                                     </button>
                                 </div>
                             </div>
@@ -138,7 +137,7 @@ const TeacherManagement = () => {
                 </Modal>
                 <Modal isOpen={showCreateModal}>
                     <div className="modal-header">
-                        <h5 className="modal-title">Create Teacher</h5>
+                        <h5 className="modal-title">Створити</h5>
                         <button
                             type="button"
                             className="close"
@@ -154,7 +153,7 @@ const TeacherManagement = () => {
                                 className="form-control"
                                 value={newTeacher.name}
                                 onChange={(e) => setNewTeacher({ ...newTeacher, name: e.target.value })}
-                                placeholder="Teacher Name"
+                                placeholder="Ім'я вчителя"
                             />
                         </div>
                         <div className="form-group">
@@ -178,14 +177,14 @@ const TeacherManagement = () => {
                             className="btn btn-secondary"
                             onClick={handleCloseCreateModal}
                         >
-                            Cancel
+                            Відмінити
                         </button>
                         <button
                             type="button"
                             className="btn btn-primary"
                             onClick={handleCreateTeacher}
                         >
-                            Create Teacher
+                            Створити
                         </button>
                     </div>
                 </Modal>

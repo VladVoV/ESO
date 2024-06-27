@@ -39,7 +39,7 @@ const EvaluationForm = () => {
     };
 
     if (hasSubmittedEvaluation) {
-        return <div>You have already submitted an evaluation for this teacher.</div>;
+        return <div>Ви уже відправили дану форму для цього викладача</div>;
     }
 
     const handleAnswerChange = (questionId, answer) => {
@@ -70,7 +70,7 @@ const EvaluationForm = () => {
         <div>
             <Header/>
         <div className="container">
-            <h2>Evaluation Form</h2>
+            <h2>Форма</h2>
             <form onSubmit={handleSubmit}>
                 {questions.map((question) => (
                     <div key={question._id} className="mb-3">
@@ -118,7 +118,7 @@ const EvaluationForm = () => {
                         {question.type === 'open' && (
                             <textarea
                                 className="form-control"
-                                placeholder="Open-ended Response"
+                                placeholder="Відкрита відповідь"
                                 value={answers[question._id] || ''}
                                 onChange={(e) => handleAnswerChange(question._id, e.target.value)}
                             />
@@ -127,13 +127,13 @@ const EvaluationForm = () => {
                 ))}
                 <textarea
                     className="form-control mb-3"
-                    placeholder="Open-ended Response"
+                    placeholder="Відкрита відповідь"
                     value={openEndedResponse}
                     onChange={(e) => setOpenEndedResponse(e.target.value)}
                 />
                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                 <button type="submit" className="btn btn-primary">
-                    Submit Evaluation
+                    Відправити
                 </button>
             </form>
         </div>

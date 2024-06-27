@@ -13,9 +13,9 @@ const SubmissionConfirmation = () => {
         <div>
             <Header/>
         <div className="container mt-5 text-center">
-            <h2 className="display-4">Thank you for your submission!</h2>
-            <p className="lead">Your evaluation has been successfully submitted.</p>
-            <button className="btn btn-primary btn-block" onClick={handleReturn}>Return to the main page</button>
+            <h2 className="display-4">Дякую за вашу участь!</h2>
+            <p className="lead">Ваша відповідь була успішно відправлена.</p>
+            <button className="btn btn-primary btn-block" onClick={handleReturn}>Повернутися на головну сторінку</button>
         </div>
         </div>
     );

@@ -61,11 +61,11 @@ const CreateQuestion = ({ onCreateQuestion, onCloseModal }) => {
                 type="text"
                 value={newQuestion.text}
                 onChange={handleInputChange}
-                placeholder="Question Text"
+                placeholder="Текст запитання"
             />
 
             <select value={newQuestion.type} onChange={handleTypeChange}>
-                <option value="">Select Question Type</option>
+                <option value="">Тип запитання</option>
                 <option value="rating">Rating</option>
                 <option value="choice">Choice</option>
                 <option value="open">Open</option>
@@ -82,17 +82,17 @@ const CreateQuestion = ({ onCreateQuestion, onCloseModal }) => {
                                 placeholder={`Choice ${index + 1}`}
                             />
                             <button type="button" onClick={() => handleRemoveChoice(index)}>
-                                Remove
+                                Вилучити
                             </button>
                         </div>
                     ))}
                     <button type="button" onClick={handleAddChoice}>
-                        Add Choice
+                        Додати
                     </button>
                 </div>
             )}
 
-            <button type="submit">Create Question</button>
+            <button type="submit">Створити</button>
         </form>
         </div>
     );

@@ -33,7 +33,6 @@ app.use(
 
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
 mongoose.connect(process.env.DB_MONGOOSE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -45,12 +44,8 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
-// Middleware
-
-// Routes
 require('./routes/routes')(app);
 
-// Authentication Route for Students
 app.post('/auth/student', async (req, res) => {
     try {
         const { groupId, password } = req.body;

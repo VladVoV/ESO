@@ -50,12 +50,12 @@ const EvaluationStatistics = () => {
         <div>
             <Header />
         <div className="container">
-            <h2>Evaluation Statistics</h2>
+            <h2>Статистика</h2>
             <div className="row">
                 <div className="col-md-6">
                     <input
                         type="text"
-                        placeholder="Search teachers..."
+                        placeholder="Пошук..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="form-control mb-3"
@@ -66,19 +66,21 @@ const EvaluationStatistics = () => {
                 <div key={teacher._id} className="card mb-3">
                     <div className="card-header">
                         <h3>{teacher.name}</h3>
+                        <p>Дата створення: {new Date(teacher.createdAt).toLocaleDateString()}</p>
+                        <p>Кількість пройдених опитувань: {teacher.numStudents}</p>
                     </div>
                     <div className="card-body">
                         <div>
-                            <h4>Question Ratings:</h4>
+                            <h4>Рейтинг:</h4>
                             <ul className="list-group">
                                 {Object.entries(teacher.answers).map(([questionId, { questionText, averageRating }]) => (
                                     <li key={questionId} className="list-group-item">
-                                        {questionText} - Average Rating: {averageRating.toFixed(2)}
+                                        {questionText} - Середній рейтинг: {averageRating.toFixed(2)}
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <p>Open-Ended Responses:</p>
+                        <p>Відкрита відповідь:</p>
                         <ul className="list-group">
                             {teacher.openEndedResponses.map((response, index) => (
                                 <li key={index} className="list-group-item">{response}</li>
@@ -86,7 +88,7 @@ const EvaluationStatistics = () => {
                         </ul>
                         <div className="card-footer">
                             <button onClick={() => handleDownloadPDF(teacher._id)} className="btn btn-primary">
-                                Download PDF
+                                Завантажити PDF
                             </button>
                         </div>
                     </div>

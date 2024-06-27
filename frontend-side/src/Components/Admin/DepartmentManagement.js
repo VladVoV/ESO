@@ -51,17 +51,17 @@ const DepartmentManagement = () => {
         <div>
             <Header/>
             <div className="container my-5">
-                <h2 className="mb-4">Department Management</h2>
+                <h2 className="mb-4">Підрозділи</h2>
                 <div className="mb-4">
                     <input
                         type="text"
                         className="form-control"
                         value={newDepartment}
                         onChange={(e) => setNewDepartment(e.target.value)}
-                        placeholder="New Department"
+                        placeholder="Новий підрозділ"
                     />
                     <button className="btn btn-primary mt-2" onClick={handleCreateDepartment}>
-                        Create Department
+                        Створити
                     </button>
                 </div>
                 <ul className="list-group">
@@ -76,7 +76,7 @@ const DepartmentManagement = () => {
                                 />
                             </div>
                             <button className="btn btn-danger" onClick={() => handleDeleteDepartment(department._id)}>
-                                Delete
+                                Видалити
                             </button>
                         </li>
                     ))}

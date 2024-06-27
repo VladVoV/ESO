@@ -90,11 +90,11 @@ const CreateGroup = ({ onCreateGroup, onCloseModal }) => {
                 name="name"
                 value={newGroup.name}
                 onChange={handleInputChange}
-                placeholder="Group Name"
+                placeholder="Ім'я групи"
             />
 
             <select name="department" value={newGroup.department} onChange={handleDepartmentChange}>
-                <option value="">Select Department</option>
+                <option value="">Підрозділ</option>
                 {departments.map((department) => (
                     <option key={department._id} value={department._id}>
                         {department.name}
@@ -105,7 +105,7 @@ const CreateGroup = ({ onCreateGroup, onCloseModal }) => {
 
             <div className="teacher-columns">
                 <div className="teacher-column">
-                    <h5>Available Teachers</h5>
+                    <h5>Доступні викладачі</h5>
                     {availableTeachers.map((teacher) => (
                         <div key={teacher._id} className="teacher-row">
               <span className="add-icon" onClick={() => handleAddTeacher(teacher._id)}>
@@ -116,7 +116,7 @@ const CreateGroup = ({ onCreateGroup, onCloseModal }) => {
                     ))}
                 </div>
                 <div className="teacher-column">
-                    <h5>Assigned Teachers</h5>
+                    <h5>Призначені викладачі</h5>
                     {newGroup.teachers.map((teacherId) => (
                         <div key={teacherId} className="teacher-row">
               <span className="remove-icon" onClick={() => handleRemoveTeacher(teacherId)}>
@@ -128,7 +128,7 @@ const CreateGroup = ({ onCreateGroup, onCloseModal }) => {
                 </div>
             </div>
 
-            <button type="submit">Create Group</button>
+            <button type="submit">Створити</button>
         </form>
         </div>
     );

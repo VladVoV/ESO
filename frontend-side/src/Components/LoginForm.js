@@ -25,21 +25,21 @@ const LoginForm = () => {
             <div className="container h-100 d-flex justify-content-center align-items-center">
                 <div className="card shadow-sm border-0 rounded">
                     <div className="card-body">
-                        <h2 className="card-title text-center mb-4">Student Login</h2>
+                        <h2 className="card-title text-center mb-4">Вхід</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="form-group mb-4">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Пароль</label>
                                 <input
                                     type="password"
                                     className="form-control"
                                     id="password"
-                                    placeholder="Enter your password"
+                                    placeholder="Введіть пароль групи"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             <button type="submit" className="btn btn-primary w-100">
-                                Login
+                                Ввійти
                             </button>
                         </form>
                     </div>

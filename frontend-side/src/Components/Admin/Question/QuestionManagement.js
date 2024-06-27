@@ -52,11 +52,11 @@ const QuestionManagement = () => {
         <div>
             <Header />
             <div className="container my-5">
-                <h2 className="mb-4">Question Management</h2>
+                <h2 className="mb-4">Запитання</h2>
                 <div className="card mb-4">
                     <div className="card-body">
                         <button className="btn btn-primary" onClick={toggleCreateModal}>
-                            Create Question
+                            Створити
                         </button>
                     </div>
                 </div>
@@ -66,20 +66,20 @@ const QuestionManagement = () => {
                             <div className="d-flex justify-content-between align-items-center mb-3">
                                 <div>
                                     <h5>{question.text}</h5>
-                                    <p className="mb-0">Type: {question.type}</p>
+                                    <p className="mb-0">Тип: {question.type}</p>
                                 </div>
                                 <div>
                                     <button
                                         className="btn btn-primary mr-2"
                                         onClick={() => handleUpdateQuestion(question)}
                                     >
-                                        Update Question
+                                        Оновити
                                     </button>
                                     <button
                                         className="btn btn-danger"
                                         onClick={() => handleDeleteQuestion(question._id)}
                                     >
-                                        Delete Question
+                                        Видалити
                                     </button>
                                 </div>
                             </div>
